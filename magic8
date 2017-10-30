@@ -1,0 +1,11 @@
+import System.IO
+import System.Random
+import Control.Monad
+main = forever $ do
+  putStrLn "Ask me a question."
+  answer <- getLine
+  g <- newStdGen
+  if fn g == 0 then putStrLn ("yes") else
+	if fn g == 1 then putStrLn ("maybe") else putStrLn ("no")
+  where 
+	fn g = (mod (fst(random g)) 3) :: Int
