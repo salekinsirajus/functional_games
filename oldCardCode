@@ -1,0 +1,15 @@
+data Suit = Clubs|Diamonds|Hearts|Spades
+            deriving (Show, Eq, Ord, Enum)
+data Value = Two|Three|Four|Five|Six|Seven|Eight|Nine|Ten|Jack|Queen|King|Ace
+             deriving (Show, Eq, Ord, Enum)
+
+data PlayingCards = Card (Value,Suit)
+                    deriving (Show, Eq)
+
+greaterCard :: PlayingCards -> PlayingCards -> String
+greaterCard (Card (a,b)) (Card (c,d))
+    |b > d = show a ++ " of " ++ show b
+    |b < d = show c ++ " of " ++ show d
+    |a > c = show a ++ " of " ++ show b
+    |a < c = show c ++ " of " ++ show d
+    |otherwise = show a ++ " of " ++ show b
