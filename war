@@ -1,0 +1,38 @@
+hand1 = fst(splitdeck(shuffle deck))
+hand2 = snd(splitdeck(shuffle deck))
+
+war :: [PlayingCards] -> [PlayingCards] -> IO () 
+war hand1 hand2 = do
+	let p1 = head(hand1)
+	let p2 = head(hand2)
+	let p1val = val(p1)
+	let p2val = val(p2)
+	putStrLn (show p1)
+	putStrLn (show p2)
+		if p1val > p2val 
+			then do let winhand = (drop 1 (hand1 ++ p1 ++ p2)) 
+			let losehand = (drop 1 hand2)
+			let hand1 = winhand
+			let hand2 = losehand
+			else if p1val < p2val
+				then do let winhand = (drop 1 (hand2 ++ p1 ++ p2))
+				let losehand = (drop 1 hand1)
+				let hand2 = winhand
+				let hand1 = losehand
+				else if p1val == p2val
+					then do let tieWinner = warTie 5 hand1 hand2
+					let winhand = (drop 
+			war hand1 hand2
+
+			
+warTie :: Int -> [PlayingCards] -> [PlayingCards] -> (Int,Int)
+warTie num hand1 hand2 = do
+	let p1warpile = take num hand1 --all cards from hand1 that are going to war (including the one being compared)
+	let p2warpile = take num hand2 --all cards from hand2 that are going to war (including the one being compared)
+	let p1war = last p1warpile --card being compared for first war
+	let p2war = last p2warpile --card being compared for first war
+	let p1warval = val(p1war)
+	let p2warval = val(p2war)
+	if p1warval > p2warval then do 
+	
+	
